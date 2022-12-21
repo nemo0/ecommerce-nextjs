@@ -32,7 +32,7 @@ const CartDetails = () => {
     setIsLoading(true);
     try {
       const { data } = await axios.post<Item[]>(
-        "http://localhost:3000/api/find",
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/find`,
         {
           ids: allItemsInCart,
         }
