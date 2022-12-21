@@ -1,5 +1,8 @@
 // pages/_app.js
 import { ChakraProvider } from "@chakra-ui/react";
+import { RecoilRoot } from "recoil";
+
+import Layout from "../components/layouts/default";
 
 import "styles/globals.css";
 
@@ -11,9 +14,13 @@ function MyApp({
   pageProps: Record<string, unknown>;
 }) {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <RecoilRoot>
+      <ChakraProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+    </RecoilRoot>
   );
 }
 

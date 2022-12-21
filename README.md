@@ -1,4 +1,8 @@
-# NextJS TypeScript + ESLint + Prettier + Husky + Chakra UI + Tailwind CSS Setup
+# Simple E-commerce Application with Next.js and PostgreSQL
+
+This is a simple e-commerce application built with Next.js and PostgreSQL. It is a full-stack application that uses Next.js for the frontend and PostgreSQL for the database. It is a simple application that allows users to add products to their cart and checkout.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/nemo0/ecommerce-nextjs)
 
 ## About the Template
 

@@ -1,8 +1,20 @@
-import { Container, Text } from "@chakra-ui/react";
-import type { NextPage } from "next";
+import React from "react";
+import { Container } from "@chakra-ui/react";
+
 import Head from "next/head";
 
-const Home: NextPage = () => {
+import ItemCard from "../components/ItemCard";
+import { Item } from "../interfaces";
+
+import { PrismaClient } from "@prisma/client";
+
+interface IProps {
+  items: Item[];
+}
+
+const Home = (props: IProps) => {
+  const items = props.items;
+
   return (
     <div>
       <Head>
@@ -11,13 +23,25 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW={"7xl"}>
-        <Text className="text-red-500" as={"h1"} fontSize={"2xl"}>
-          NextJS Typescript + Chakra UI + Tailwind
-        </Text>
+      <Container maxW={"7xl"} paddingY={"4"}>
+        {items.map((item) => (
+          <ItemCard Item={item} key={item.id} />
+        ))}
       </Container>
     </div>
   );
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+  const prisma = new PrismaClient();
+
+  const data = await prisma.item.findMany();
+
+  return {
+    props: {
+      items: data,
+    },
+  };
+}
