@@ -5,8 +5,10 @@ import {
   useColorModeValue,
   Stack,
   useColorMode,
+  Icon,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon, Icon } from "@chakra-ui/icons";
+
+import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
 
 import { FiShoppingCart } from "react-icons/fi";
 
@@ -40,7 +42,11 @@ export default function Nav() {
                 </Button>
               </Link>
               <Button onClick={toggleColorMode}>
-                {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+                {colorMode === "light" ? (
+                  <Icon as={BsMoonStarsFill} />
+                ) : (
+                  <Icon as={BsSunFill} />
+                )}
               </Button>
             </Stack>
           </Flex>
